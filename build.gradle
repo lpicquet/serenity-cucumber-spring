@@ -1,0 +1,26 @@
+group 'fukoka.testing'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+ext {
+    serenityVersion = "1.9.36"
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    testCompile "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testCompile "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    testCompile "net.serenity-bdd:serenity-cucumber:1.9.15"
+    testCompile "net.serenity-bdd:serenity-rest-assured:${serenityVersion}"
+    testCompile "net.serenity-bdd:serenity-spring:${serenityVersion}"
+
+}
+
