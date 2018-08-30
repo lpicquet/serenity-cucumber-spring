@@ -4,20 +4,23 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import fukoka.testing.TestConfiguration;
+import fukoka.testing.TestContext;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.RestRequests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration(classes=TestConfiguration.class)
-@Component
+@ContextConfiguration(classes = TestConfiguration.class)
 public class MyOtherStepDefs {
 
+    @Autowired
+    TestContext testContext;
+
     private Response response;
+
     @Value("${someOtherPage.url}")
     private String someOtherPage;
 
@@ -31,5 +34,11 @@ public class MyOtherStepDefs {
         String body = response.then().extract().body().asString();
         assertNotNull("the body should not be null", body);
     }
+
+    @And("I increment")
+    public void iIncrement() {
+        testContext.getAtomicInteger().incrementAndGet();
+    }
+
 
 }
