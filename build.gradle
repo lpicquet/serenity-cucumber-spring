@@ -1,17 +1,27 @@
 group 'fukoka.testing'
 version '1.0-SNAPSHOT'
 
+buildscript {
+    ext {
+        serenityVersion = "1.9.36"
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:${serenityVersion}")
+    }
+}
+
 apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
     jcenter()
-}
-
-ext {
-    serenityVersion = "1.9.36"
 }
 
 dependencies {
@@ -21,6 +31,5 @@ dependencies {
     testCompile "net.serenity-bdd:serenity-cucumber:1.9.15"
     testCompile "net.serenity-bdd:serenity-rest-assured:${serenityVersion}"
     testCompile "net.serenity-bdd:serenity-spring:${serenityVersion}"
-
 }
 
