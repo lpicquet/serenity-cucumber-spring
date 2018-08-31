@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.rules.SpringMethodRule;
                  "junit:build/reports/junit-test-report.xml",
                  "html:build/reports/cucumber-html-reports"
          },
-         glue = { "fukoka.testing.features"},
+         glue = { "fukoka.testing.steps"},
          features = {"classpath:features"},
          strict = true,
          tags = "not @ignore"
